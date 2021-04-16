@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Car Finder</title>
+    <style type="text/css">
+        #validationFeedback {
+        color: red; font-weight: bold
+        }
+    </style> 
+    <script type="text/javascript">
+
+	function validate()  {
+
+		var fName = document.forms["submitForm"]["firstName"].value;
+        	var lName = document.forms["submitForm"]["lastName"].value;
+        	var email = document.forms["submitForm"]["emailAddress"].value;
+		var gender = document.forms["submitForm"]["gender"].value;
+        	var age = document.forms["submitForm"]["age"].value;
+
+		var emailTest = new RegExp("^[a-zA-Z0-9_.-]+@[a-zA-Z0-9_.-]+$");
+		var nameTest = new RegExp("^[a-zA-Z- ]+$");
+		validFirst = nameTest.test(fName);
+		validLast = nameTest.test(lName);
+		validEmail = emailTest.test(email);
+		
+		if(!fName || !lName || !gender || !email || !age){
+			document.getElementById('validationFeedback').innerHTML =
+              		"ERROR: Fill out all fields";
+			return false;
+		}
+
+	
+		if (validFirst && fName.length <= 50) { // update form feedback
+          		document.getElementById('validationFeedback').innerHTML = "";
+			
+        	} else {
+          	document.getElementById('validationFeedback').innerHTML =
+              		"ERROR: Invalid First Name";
+			return false;
+        	}
+
+		if (validLast && lName.length <= 50) { // update form feedback
+          		document.getElementById('validationFeedback').innerHTML = "";
+        	} else {
+          	document.getElementById('validationFeedback').innerHTML =
+              		"ERROR: Invalid Last Name";
+			return false;
+        	}
+
+		
+		if (validEmail && email.length <= 50) { // update form feedback
+          		document.getElementById('validationFeedback').innerHTML = "";
+        	} else {
+          	document.getElementById('validationFeedback').innerHTML =
+              		"ERROR: Invalid Email";
+			return false;
+        	}	
+		
+
+		if (age >= 17 && age <= 29) { // update form feedback
+          		document.getElementById('validationFeedback').innerHTML = "";
+        	} else {
+          	document.getElementById('validationFeedback').innerHTML =
+              		"ERROR: Invalid Age - age is not in range";
+			return false;
+        	}
+		
+		return true;
+	}
+	
+    </script>
+    <link rel="stylesheet" type="text/css" href="csl.css"/>
+    </head>
+  <body>
+    <script src="script.js"> </script>
+    <h1> Lets go find a car!</h1>
+<ul>
+	<li><a href="main.html">What is Volkswagen?</a></li>
+  	<li><a href="brands.html">Subsidiaries</a></li>
+  	<li><a href="specs.html">All about specs</a></li>
+	<li><a href="carsearch.html">Car finder</a></li>
+    </ul> 
+    <hr>
+
+	<p> Know that you hopefully have an idea of what you are looking for, please use these search boxes to find what you are looking for!</p> 
+
+
+<form action="demo.php" method="POST" name="submitForm"
+          onsubmit="return validate()">
+	<!-- This is the special area for error messages -->
+	<div id="validationFeedback"></div>
+	
+	<div>
+	<label>First name:</label>
+	<input name = "firstName" type = "text" />
+
+	<br>
+
+	<label>Last name:</label>
+	<input name = "lastName" type = "text" />
+
+	<br>	
+	
+	<label>Email:</label>
+	<input name = "emailAddress" type = "text" /> 
+
+	<br>	
+	
+	<label>Age:</label>
+	<input name = "age" type = "text" />  
+
+	<br> 
+
+	<input type="radio" name="gender" value="male"> Male
+	<input type="radio" name="gender" value="female"> Female
+
+	<br>
+	
+	<input type="checkbox" name="carAccess" value="car">Car Access
+	 	
+	</div>
+
+      <div>
+        Click the Submit once all info has been filled:
+        <input type="submit"/>
+      </div>
+    </form>
+  </body>
+</html>
