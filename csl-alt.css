@@ -1,0 +1,13 @@
+ html {
+        font-size: 15;
+        font-family: serif;
+        text-align: left;
+	color: black;
+      }
+body {
+        width: 800px;
+        margin: auto;
+        padding: 0 10px 10px 10px;
+        border: 5px black;
+	background-color: white;
+      }

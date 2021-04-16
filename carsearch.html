@@ -11,62 +11,111 @@
     <script type="text/javascript">
 
 	function validate()  {
-
-		var fName = document.forms["submitForm"]["firstName"].value;
-        	var lName = document.forms["submitForm"]["lastName"].value;
-        	var email = document.forms["submitForm"]["emailAddress"].value;
-		var gender = document.forms["submitForm"]["gender"].value;
-        	var age = document.forms["submitForm"]["age"].value;
-
-		var emailTest = new RegExp("^[a-zA-Z0-9_.-]+@[a-zA-Z0-9_.-]+$");
-		var nameTest = new RegExp("^[a-zA-Z- ]+$");
-		validFirst = nameTest.test(fName);
-		validLast = nameTest.test(lName);
-		validEmail = emailTest.test(email);
+		var brand = document.forms["submitForm"]["brand"].value;
+        	var body = document.forms["submitForm"]["body"].value;
+        	var drivetrain = document.forms["submitForm"]["drivetrain"].value;
+		var hp = document.forms["submitForm"]["horsepower"].value;
+        	var torque = document.forms["submitForm"]["torque"].value;
+		var price = document.forms["submitForm"]["price"].value;
+		var mpg = document.forms["submitForm"]["mpg"].value;
 		
-		if(!fName || !lName || !gender || !email || !age){
+		var Etest = new RegExp("^[a-zA-Z]+$");
+		
+	
+		
+		if(!brand && !body && !drivetrain && !hp && !torque && !price && !mpg){
+			
+				
 			document.getElementById('validationFeedback').innerHTML =
-              		"ERROR: Fill out all fields";
+              		"ERROR: Must fill at least one field";
 			return false;
+
 		}
 
-	
-		if (validFirst && fName.length <= 50) { // update form feedback
+		if (brand) { // update form feedback
+			validBrand = Etest.test(brand);
+			if(!validBrand || brand.length > 20) {
+				document.getElementById('validationFeedback').innerHTML =
+              			"ERROR: Not valid brand name";
+				return false;
+			}			
+
           		document.getElementById('validationFeedback').innerHTML = "";
 			
-        	} else {
-          	document.getElementById('validationFeedback').innerHTML =
-              		"ERROR: Invalid First Name";
-			return false;
-        	}
+        	} 
 
-		if (validLast && lName.length <= 50) { // update form feedback
+	
+		if (body) { // update form feedback
+			validBody = Etest.test(body);
+			if(!validBody || body.length > 20) {
+				document.getElementById('validationFeedback').innerHTML =
+              			"ERROR: Not valid body";
+				return false;
+			}			
+
           		document.getElementById('validationFeedback').innerHTML = "";
-        	} else {
-          	document.getElementById('validationFeedback').innerHTML =
-              		"ERROR: Invalid Last Name";
-			return false;
-        	}
+			
+        	} 
 
 		
-		if (validEmail && email.length <= 50) { // update form feedback
-          		document.getElementById('validationFeedback').innerHTML = "";
-        	} else {
-          	document.getElementById('validationFeedback').innerHTML =
-              		"ERROR: Invalid Email";
-			return false;
-        	}	
-		
 
-		if (age >= 17 && age <= 29) { // update form feedback
+		if (drivetrain) { // update form feedback
+			if(drivetrain.length > 20) {
+				document.getElementById('validationFeedback').innerHTML =
+              			"ERROR: Not valid drivetrain";
+				return false;
+			}			
+
           		document.getElementById('validationFeedback').innerHTML = "";
-        	} else {
-          	document.getElementById('validationFeedback').innerHTML =
-              		"ERROR: Invalid Age - age is not in range";
-			return false;
-        	}
+        	} 
+		
+		if (hp) { // update form feedback
+			if(hp < 0 || hp > 1000) {
+				document.getElementById('validationFeedback').innerHTML =
+              			"ERROR: Not valid horsepower";
+				return false;
+			}			
+
+          		document.getElementById('validationFeedback').innerHTML = "";
+        	} 
+
+		if (torque) { // update form feedback
+			if(torque < 0 || torque > 1000) {
+				document.getElementById('validationFeedback').innerHTML =
+              			"ERROR: Not valid torque";
+				return false;
+			}			
+
+          		document.getElementById('validationFeedback').innerHTML = "";
+        	} 
+
+		if (price) { // update form feedback
+			if(price < 0 || price > 1000000000) {
+				document.getElementById('validationFeedback').innerHTML =
+              			"ERROR: Not valid torque";
+				return false;
+			}			
+
+          		document.getElementById('validationFeedback').innerHTML = "";
+        	} 
+
+		if (mpg) { // update form feedback
+			if(mpg < 0 || mpg > 100) {
+				document.getElementById('validationFeedback').innerHTML =
+              			"ERROR: Not valid mpg";
+				return false;
+			}			
+
+          		document.getElementById('validationFeedback').innerHTML = "";
+        	} 
+
 		
 		return true;
+	}
+
+	function show(){
+		alert("You've entered");
+		
 	}
 	
     </script>
@@ -86,43 +135,51 @@
 	<p> Know that you hopefully have an idea of what you are looking for, please use these search boxes to find what you are looking for!</p> 
 
 
-<form action="demo.php" method="POST" name="submitForm"
+<form action="statictable.html" method="get" name="submitForm"
           onsubmit="return validate()">
 	<!-- This is the special area for error messages -->
 	<div id="validationFeedback"></div>
 	
 	<div>
-	<label>First name:</label>
-	<input name = "firstName" type = "text" />
+	<label>Brand:</label>
+	<input name = "brand" type = "text" />
 
 	<br>
 
-	<label>Last name:</label>
-	<input name = "lastName" type = "text" />
+	<label>Body:</label>
+	<input name = "body" type = "text" />
 
 	<br>	
 	
-	<label>Email:</label>
-	<input name = "emailAddress" type = "text" /> 
+	<label>Drivetrain:</label>
+	<input name = "drivetrain" type = "text" /> 
 
 	<br>	
 	
-	<label>Age:</label>
-	<input name = "age" type = "text" />  
+	<label>Horsepower:</label>
+	<input name = "horsepower" type = "number" />  
 
 	<br> 
 
-	<input type="radio" name="gender" value="male"> Male
-	<input type="radio" name="gender" value="female"> Female
+	<label>Torque:</label>
+	<input name = "torque" type = "number" /> 
 
 	<br>
+
+	<label>Price:</label>
+	<input name = "price" type = "number" /> 
 	
-	<input type="checkbox" name="carAccess" value="car">Car Access
+	<br>
+	
+	<label>Gase Mileage:</label>
+	<input name = "mpg" type = "number" /> 
+	
+	<br>
 	 	
 	</div>
 
       <div>
-        Click the Submit once all info has been filled:
+        Click the submit to search for a car:
         <input type="submit"/>
       </div>
     </form>
