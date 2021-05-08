@@ -29,7 +29,7 @@
 		
 		if(!model || !price || !hp || !trans || !torque || !weight || !engine || !driveType || !subsid || !mpg){
 			document.getElementById('validationFeedback').innerHTML =
-              		"ERROR: Must all fields";
+              		"ERROR: Must fill all fields";
 			return false;
 
 		}
@@ -69,7 +69,7 @@
 
 		if(!valid){
 			document.getElementById('validationFeedback').innerHTML =
-              		"ERROR: not valid subsidiary";
+              		"ERROR: Not valid subsidiary";
 			return false;
 
 		}
