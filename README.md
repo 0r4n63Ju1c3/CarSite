@@ -10,4 +10,4 @@ Car body types take from https://www.vectorstock.com/royalty-free-vector/car-or-
 For the work itself, I used my own previous pex as a starting point. Because of this, I used the same css - styling sheets from the web development pex and altered it 
 to fit the new website. Similarly, I also recycled some of the core structure from this pex. Other than this, I used the examples presented on Dr Coffman's website for
 parsing data and javascript formatting. I also used W3 schools to teach me how to make sections within HTML that you can navigate to. Besides what was mentioned above,
-I did not work with anyone else or use any other resources. 
+I did not work with anyone else or use any other resources. I also used W3 schools to teach me how to make prepare statements when it comes to html. 

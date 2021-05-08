@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Enter a car</title>
+    <style type="text/css">
+        #validationFeedback {
+        color: red; font-weight: bold
+        }
+    </style> 
+<script type="text/javascript">
+
+	function validate()  {
+	
+		var model = document.forms["submitForm"]["model"].value;
+        	var price = document.forms["submitForm"]["price"].value;
+        	var hp = document.forms["submitForm"]["horsepower"].value;
+		var trans= document.forms["submitForm"]["transmission"].value;
+        	var torque = document.forms["submitForm"]["torque"].value;
+		var weight = document.forms["submitForm"]["weight"].value;
+		var engine = document.forms["submitForm"]["engine"].value;
+		var driveType = document.forms["submitForm"]["drive_type"].value;
+		var subsid = document.forms["submitForm"]["subsidiary"].value;
+		var mpg = document.forms["submitForm"]["mpg"].value;
+	
+
+		var Etest = new RegExp("^[a-zA-Z0-9 ]+$");
+		
+		
+		if(!model || !price || !hp || !trans || !torque || !weight || !engine || !driveType || !subsid || !mpg){
+			document.getElementById('validationFeedback').innerHTML =
+              		"ERROR: Must all fields";
+			return false;
+
+		}
+
+		valid = Etest.test(model);
+		if(!valid || model.length > 10){
+			document.getElementById('validationFeedback').innerHTML =
+              			"ERROR: Not valid model";
+				return false;
+		}
+		
+		
+		if(trans.length != 1){
+			document.getElementById('validationFeedback').innerHTML =
+              			"ERROR: Not valid transmission";
+				alert(trans);
+				return false;
+		}
+		
+		
+		if(engine.length > 10){
+			document.getElementById('validationFeedback').innerHTML =
+              			"ERROR: Not valid engine";
+				return false;
+
+		}
+
+	
+		if(driveType.length != 1){
+			document.getElementById('validationFeedback').innerHTML =
+              			"ERROR: Not valid drive type";
+				return false;
+
+		}
+
+		valid = Etest.test(subsid);
+
+		if(!valid){
+			document.getElementById('validationFeedback').innerHTML =
+              		"ERROR: not valid subsidiary";
+			return false;
+
+		}
+
+		return true;
+		
+	}
+
+	
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="csl.css"/>
+    </head>
+  <body>
+    <h1> Enter a car!</h1>
+<ul>
+	<li><a href="main.html">What is Volkswagen?</a></li>
+  	<li><a href="brands.html">Subsidiaries</a></li>
+  	<li><a href="specs.html">All about specs</a></li>
+	<li><a href="carsearch.html">Car finder</a></li>
+    </ul> 
+    <hr>
+
+	<p>If there is a car that you do not see, please enter it!</p> 
+
+
+<form action="insert.php" method="POST" name="submitForm"
+          onsubmit="return validate()">
+
+	<!-- This is the special area for error messages -->
+	<div id="validationFeedback"></div>
+	
+
+	<div>
+	<label>Model:</label>
+	<input name = "model" type = "text" />
+
+	<br>
+
+	<label>Price:</label>
+	<input name = "price" type = "number" />
+
+	<br>	
+	
+	<label>horsepower:</label>
+	<input name = "horsepower" type = "number" /> 
+
+	<br>	
+	
+	<label>transmission:</label>
+	<input name = "transmission" type = "text" />  
+
+	<br> 
+
+	<label>Torque:</label>
+	<input name = "torque" type = "number" /> 
+
+	<br>
+
+	<label>Weight:</label>
+	<input name = "weight" type = "number" /> 
+	
+	<br>
+	
+	<label>Engine:</label>
+	<input name = "engine" type = "text" /> 
+	
+	<br>
+
+	<label>Drive type:</label>
+	<input name = "drive_type" type = "text" /> 
+	
+	<br>
+
+	<label>Subsidiary:</label>
+	<input name = "subsidiary" type = "text" /> 
+	
+	<br>
+	 
+	<label>mpg:</label>
+	<input name = "mpg" type = "number" /> 
+	<br>
+	</div>
+
+      <div>
+        Click the submit to enter new car:
+        <input type="submit"/>
+      </div>
+    </form>
+  </body>
+</html>

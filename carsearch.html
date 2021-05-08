@@ -7,7 +7,7 @@
         #validationFeedback {
         color: red; font-weight: bold
         }
-    </style>
+    </style> 
     <script type="text/javascript">
 
 	function validate()  {
@@ -18,14 +18,14 @@
         	var torque = document.forms["submitForm"]["torque"].value;
 		var price = document.forms["submitForm"]["price"].value;
 		var mpg = document.forms["submitForm"]["mpg"].value;
-
+		
 		var Etest = new RegExp("^[a-zA-Z]+$");
-
-
-
+		
+	
+		
 		if(!brand && !body && !drivetrain && !hp && !torque && !price && !mpg){
-
-
+			
+				
 			document.getElementById('validationFeedback').innerHTML =
               		"ERROR: Must fill at least one field";
 			return false;
@@ -38,86 +38,82 @@
 				document.getElementById('validationFeedback').innerHTML =
               			"ERROR: Not valid brand name";
 				return false;
-			}
+			}			
 
           		document.getElementById('validationFeedback').innerHTML = "";
+			
+        	} 
 
-        	}
-
-
+	
 		if (body) { // update form feedback
 			validBody = Etest.test(body);
 			if(!validBody || body.length > 20) {
 				document.getElementById('validationFeedback').innerHTML =
               			"ERROR: Not valid body";
 				return false;
-			}
+			}			
 
           		document.getElementById('validationFeedback').innerHTML = "";
+			
+        	} 
 
-        	}
-
-
+		
 
 		if (drivetrain) { // update form feedback
 			if(drivetrain.length > 20) {
 				document.getElementById('validationFeedback').innerHTML =
               			"ERROR: Not valid drivetrain";
 				return false;
-			}
+			}			
 
           		document.getElementById('validationFeedback').innerHTML = "";
-        	}
-
+        	} 
+		
 		if (hp) { // update form feedback
 			if(hp < 0 || hp > 1000) {
 				document.getElementById('validationFeedback').innerHTML =
               			"ERROR: Not valid horsepower";
 				return false;
-			}
+			}			
 
           		document.getElementById('validationFeedback').innerHTML = "";
-        	}
+        	} 
 
 		if (torque) { // update form feedback
 			if(torque < 0 || torque > 1000) {
 				document.getElementById('validationFeedback').innerHTML =
               			"ERROR: Not valid torque";
 				return false;
-			}
+			}			
 
           		document.getElementById('validationFeedback').innerHTML = "";
-        	}
+        	} 
 
 		if (price) { // update form feedback
 			if(price < 0 || price > 1000000000) {
 				document.getElementById('validationFeedback').innerHTML =
               			"ERROR: Not valid torque";
 				return false;
-			}
+			}			
 
           		document.getElementById('validationFeedback').innerHTML = "";
-        	}
+        	} 
 
 		if (mpg) { // update form feedback
 			if(mpg < 0 || mpg > 100) {
 				document.getElementById('validationFeedback').innerHTML =
               			"ERROR: Not valid mpg";
 				return false;
-			}
+			}			
 
           		document.getElementById('validationFeedback').innerHTML = "";
-        	}
+        	} 
 
-
+		
 		return true;
 	}
 
-	function show(){
-		alert("You've entered");
-
-	}
-
+	
     </script>
     <link rel="stylesheet" type="text/css" href="csl.css"/>
     </head>
@@ -129,17 +125,17 @@
   	<li><a href="brands.html">Subsidiaries</a></li>
   	<li><a href="specs.html">All about specs</a></li>
 	<li><a href="carsearch.html">Car finder</a></li>
-    </ul>
+    </ul> 
     <hr>
 
-	<p> Now that you hopefully have an idea of what you are looking for, please use these search boxes to find what you are looking for!</p>
+	<p> Know that you hopefully have an idea of what you are looking for, please use these search boxes to find what you are looking for!</p> 
 
 
-<form action="statictable.html" method="get" name="submitForm"
+<form action="results.php" method="POST" name="submitForm"
           onsubmit="return validate()">
 	<!-- This is the special area for error messages -->
 	<div id="validationFeedback"></div>
-
+	
 	<div>
 	<label>Brand:</label>
 	<input name = "brand" type = "text" />
@@ -149,33 +145,33 @@
 	<label>Body:</label>
 	<input name = "body" type = "text" />
 
-	<br>
-
+	<br>	
+	
 	<label>Drivetrain:</label>
-	<input name = "drivetrain" type = "text" />
+	<input name = "drivetrain" type = "text" /> 
 
-	<br>
-
+	<br>	
+	
 	<label>Horsepower:</label>
-	<input name = "horsepower" type = "number" />
+	<input name = "horsepower" type = "number" />  
 
-	<br>
+	<br> 
 
 	<label>Torque:</label>
-	<input name = "torque" type = "number" />
+	<input name = "torque" type = "number" /> 
 
 	<br>
 
 	<label>Price:</label>
-	<input name = "price" type = "number" />
-
+	<input name = "price" type = "number" /> 
+	
 	<br>
-
-	<label>Gase Mileage:</label>
-	<input name = "mpg" type = "number" />
-
+	
+	<label>Gas Mileage:</label>
+	<input name = "mpg" type = "number" /> 
+	
 	<br>
-
+	 	
 	</div>
 
       <div>
@@ -183,5 +179,7 @@
         <input type="submit"/>
       </div>
     </form>
+	<a href="insertion.html">missing data, click here!</a>
+	<a href="deletion.html">too much data, click here!</a>
   </body>
 </html>

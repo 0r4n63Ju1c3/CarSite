@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Enter a car</title>
+    <style type="text/css">
+        #validationFeedback {
+        color: red; font-weight: bold
+        }
+    </style> 
+	
+<script type="text/javascript">
+
+	function validate()  {
+
+	var model = document.forms["submitForm"]["model"].value;
+	var Etest = new RegExp("^[a-zA-Z0-9 ]+$");
+
+	valid = Etest.test(model);
+		if(!valid || model.length > 10 || !model){
+			document.getElementById('validationFeedback').innerHTML =
+              			"ERROR: Not valid model";
+				return false;
+		}
+	return true;
+
+	}
+
+</script>
+	
+		var model = document.forms["submitForm"]["model"].value;
+    <link rel="stylesheet" type="text/css" href="csl.css"/>
+    </head>
+  <body>
+    <h1> Delete a car!</h1>
+<ul>
+	<li><a href="main.html">What is Volkswagen?</a></li>
+  	<li><a href="brands.html">Subsidiaries</a></li>
+  	<li><a href="specs.html">All about specs</a></li>
+	<li><a href="carsearch.html">Car finder</a></li>
+    </ul> 
+    <hr>
+
+	<p>If there is an outdated cars please remove them</p> 
+
+
+<form action="delete.php" method="POST" name="submitForm" onsubmit ="return validate()">
+
+	<!-- This is the special area for error messages -->
+	<div id="validationFeedback"></div>
+
+	<div>
+	<label>Model:</label>
+	<input name = "model" type = "text" />
+	<br> 
+	click the submit to delete car:
+        <input type="submit"/>
+
+    </form>
+  </body>
+</html>
